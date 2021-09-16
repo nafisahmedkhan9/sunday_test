@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Row, Col, Button, Table } from "react-bootstrap";
+import { Row, Col, Table } from "react-bootstrap";
 import CustomButton from "../../Components/CustomButton";
 
 export default function Users() {
