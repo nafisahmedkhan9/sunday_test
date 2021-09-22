@@ -10,6 +10,9 @@ import './App.css';
 const hist = createBrowserHistory();
 
 function App() {
+
+  let isLoggedIn = localStorage.getItem("is_login");
+
   return (
     <div style={{ display: "flex" }}>
       <div style={{ width: "60%" }}>
@@ -36,7 +39,7 @@ function App() {
                   exact={true}
                   component={PageNotFound}
                 />
-                <Redirect to="/page_not_found" />
+                {isLoggedIn !== "yes" ? <Redirect to="/login" /> : <Redirect to="/page_not_found" />}
               </Switch>
             </Router>
           </Card.Body>

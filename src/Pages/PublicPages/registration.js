@@ -60,17 +60,20 @@ export default withRouter(function Registration() {
           setValidationErrorMessage(
             "Email already register with us. Please login"
           );
+          return undefined
         } else {
           newUserList[email] = details;
           localStorage.setItem("user_list", JSON.stringify(newUserList));
           history.push("/login");
           resetState();
+          return undefined
         }
       } else {
         newUserList[email] = details;
         localStorage.setItem("user_list", JSON.stringify(newUserList));
         history.push("/login");
         resetState();
+        return undefined
       }
     }
   };

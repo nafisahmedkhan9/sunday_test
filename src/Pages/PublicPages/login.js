@@ -31,19 +31,22 @@ export default withRouter(function Login() {
     setValidationErrorMessage("");
     if (!validateInput(email, "email")) {
       setValidationErrorMessage("Invalid email");
+      return
     } else if (!validateInput(password, "password")) {
       setValidationErrorMessage(
         "Password must include atleat one character, one number and one special chanracter. Should be of length greater then 8"
       );
+      return
     } else {
       var userList = localStorage.getItem("user_list")
         ? JSON.parse(localStorage.getItem("user_list"))
         : null;
-
-      if (!userList && !userList[email]) {
+      console.log(userList, "userlist")
+      if (!userList || !userList[email]) {
         setValidationErrorMessage(
           "Email not registered with us. Please register first"
         );
+        return undefined
       }
 
       if (userList && userList[email] && userList[email].password) {
@@ -51,6 +54,7 @@ export default withRouter(function Login() {
         history.push("/users");
       } else {
         setValidationErrorMessage("Email or password incorrect. ");
+        return undefined
       }
     }
   };
